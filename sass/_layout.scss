@@ -1,0 +1,280 @@
+// Main
+#main {
+    //create a "sticky footer" layout:
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+// Page
+#page {
+    flex: 1; //pushes footer to bottom to make it "sticky"
+}
+
+// Section
+section {
+    width: 100%;
+    min-height: 1px;
+    position: relative;
+    overflow: hidden;
+}
+section.fluid > .content-container,
+.content-container.fluid {
+    max-width: none !important;
+}
+
+// Relative Element Spacing
+.section-title-container + * {margin-top: $bufferSm; @include bp-md {margin-top: $bufferLg;}}
+h1 + *, h2 + * {margin-top: 20px;}
+h3 + *, h4 + p {margin-top: 10px;}
+h4 + .domo-button {margin-top: $buff;}
+p + *:not(.column) {margin-top: 20px;}
+
+.domo-button > .domo-button {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    margin-top: $buff;
+    @include bp-sm {
+        width: auto;
+        margin-left: $buff;
+        margin-top: 0;
+    }
+}
+
+// Containment
+.content-container {
+    position: relative;
+    height: 100%;
+    min-height: inherit;
+    max-width: 100%;
+    margin: auto;
+    @include bp-md {
+        max-width: 760px;
+    }
+    @include bp-lg {
+        max-width: 980px;
+    }
+    @include bp-xl {
+        max-width: 1070px;
+    }
+}
+@include bp-md {
+    .content-max {
+        max-width: unquote((10 / 12) * 100 + '%');
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+// Display
+.inline-block {display: inline-block;}
+.inline {display: inline;}
+.flex {display: flex;}
+.block {display: block;}
+
+// Spacing
+/* Padding */
+.padding {
+    padding-top: $paddingSm;
+    padding-bottom: $paddingSm;
+    @include bp-md {
+        padding-top: $paddingLg;
+        padding-bottom: $paddingLg;
+    }
+}
+.padding-top {
+    padding-top: $paddingSm;
+    @include bp-md {
+        padding-top: $paddingLg;
+    }
+}
+.padding-bottom {
+    padding-bottom: $paddingSm;
+    @include bp-md {
+        padding-bottom: $paddingLg;
+    }
+}
+/* Pad */
+.pad {
+    padding: $pad;
+}
+.pad-top {
+    padding-top: $pad;
+}
+.pad-bottom {
+    padding-bottom: $pad;
+}
+.pad-vert {
+    padding-top: $pad;
+    padding-bottom: $pad;
+}
+.pad-left {
+    padding-left: $pad;
+}
+.pad-right {
+    padding-right: $pad;
+}
+.pad-sides {
+    padding-left: $pad;
+    padding-right: $pad;
+}
+/* buffer */
+.buffer {
+    margin-top: $bufferSm;
+    margin-bottom: $bufferSm;
+    @include bp-md {
+        margin-top: $bufferLg;
+        margin-bottom: $bufferLg;
+    }
+}
+.buffer-top {
+    margin-top: $bufferSm;
+    @include bp-md {
+        margin-top: $bufferLg;
+    }
+}
+.buffer-bottom {
+    margin-bottom: $bufferSm;
+    @include bp-md {
+        margin-bottom: $bufferLg;
+    }
+}
+/* buff */
+.buff {
+    margin: $buff;
+}
+.buff-top {
+    margin-top: $buff;
+}
+.buff-bottom {
+    margin-bottom: $buff;
+}
+.no-buff-bottom {
+    margin-bottom: 0 !important;
+}
+.buff-vert {
+    margin-top: $buff;
+    margin-bottom: $buff;
+}
+.buff-left {
+    margin-left: $buff;
+}
+.buff-right {
+    margin-right: $buff;
+}
+.buff-sides {
+    margin-left: $buff;
+    margin-right: $buff;
+}
+
+
+/* needed to prevent padding and flex mix on column */
+.row.col-pad > .column > div,
+.column.pad > div {
+    padding: $pad;
+}
+.row.col-pad-top > .column > div,
+.column.pad-top > div {
+    padding-top: $pad;
+}
+.row.col-pad-bottom > .column > div,
+.column.pad-bottom > div {
+    padding-bottom: $pad;
+}
+.row.col-pad-vert > .column > div,
+.column.pad-vert > div {
+    padding-top: $pad;
+    padding-bottom: $pad;
+}
+.row.col-pad-left > .column > div,
+.column.pad-left > div {
+    padding-left: $pad;
+}
+.row.col-pad-right > .column > div,
+.column.pad-right > div {
+    padding-right: $pad;
+}
+.row.col-pad-sides > .column > div,
+.column.pad-sides > div {
+    padding-left: $pad;
+    padding-right: $pad;
+}
+.row.col-padding > .column > div,
+.column.padding > div {
+    padding-top: $paddingSm;
+    padding-bottom: $paddingSm;
+    @include bp-md {
+        padding-top: $paddingLg;
+        padding-bottom: $paddingLg;
+    }
+}
+.row.col-padding-top > .column > div,
+.column.padding-top > div {
+    padding-top: $paddingSm;
+    @include bp-md {
+        padding-top: $paddingLg;
+    }
+}
+.row.col-padding-bottom > .column > div,
+.column.padding-bottom > div {
+    padding-bottom: $paddingSm;
+    @include bp-md {
+        padding-bottom: $paddingLg;
+    }
+}
+/* needed to prevent margin and flex mix on column */
+.row.col-buff > .column > div,
+.column.buff > div {
+    margin: $buff;
+}
+.row.col-buff-top > .column > div,
+.column.buff-top > div {
+    margin-top: $buff;
+}
+.row.col-buff-bottom > .column > div,
+.column.buff-bottom > div {
+    margin-bottom: $buff;
+}
+.row.col-buff-vert > .column > div,
+.column.buff-vert > div {
+    margin-top: $buff;
+    margin-bottom: $buff;
+}
+.row.col-buff-left > .column > div,
+.column.buff-left > div {
+    margin-left: $buff;
+}
+.row.col-buff-right > .column > div,
+.column.buff-right > div {
+    margin-right: $buff;
+}
+.row.col-buff-sides > .column > div,
+.column.buff-sides > div {
+    margin-left: $buff;
+    margin-right: $buff;
+}
+.row.col-buffer > .column > div,
+.column.buffer > div {
+    margin-top: $bufferSm;
+    margin-bottom: $bufferSm;
+    @include bp-md {
+        margin-top: $bufferLg;
+        margin-bottom: $bufferLg;
+    }
+}
+.row.col-buffer-top > .column > div,
+.column.buffer-top > div {
+    margin-top: $bufferSm;
+    @include bp-md {
+        margin-top: $bufferLg;
+    }
+}
+.row.col-buffer-bottom > .column > div,
+.column.buffer-bottom > div {
+    margin-bottom: $bufferSm;
+    @include bp-md {
+        margin-bottom: $bufferLg;
+    }
+}

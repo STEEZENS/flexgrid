@@ -1,0 +1,132 @@
+//Row
+.row {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+.row.no-flex {
+    display: block !important;
+}
+.row.no-wrap {
+    flex-wrap: nowrap !important;
+}
+.row.vertical-center {
+    min-height: inherit;
+    height: 100%;
+    > .column {
+        height: auto;
+        align-self: center;
+    }
+}
+
+//Column
+.column {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    position: relative;
+    width: 100%;
+    max-height: 100%;
+    // causes stretch problems
+    height: 100%;
+    flex: 0 1 auto;
+    > div {
+        position: relative;
+        // causes stretch problems
+        height: 100%;
+    }
+}
+
+// TODO: fix .column, .inner-column height and stretch problems. Avoid giving margins to .inner-column. Only use padding
+
+// Gutters
+.row.gutters > .column > div {
+    margin: 0 $pad $bufferSm $pad;
+}
+.row.gutters.no-gutter-bottom {
+    margin-bottom: -$bufferSm;
+}
+
+//Reverse Order
+.reverse {flex-direction: row-reverse;}
+
+//Reverse Wrap
+.wrap-reverse {flex-wrap: wrap-reverse;}
+
+//Row to Col Alignment
+.row.align-start > .column {align-self: flex-start;}
+.row.align-center > .column {align-self: center;}
+.row.align-end > .column {align-self: flex-end;}
+.row.align-stretch {align-items: stretch;}
+.row.align-stretch > .column {align-self: stretch;}
+
+//Justify Content
+.row.justify-start {justify-content: flex-start;}
+.row.justify-center {justify-content: center;}
+.row.justify-end {justify-content: flex-end;}
+.row.justify-around {justify-content: space-around;}
+.row.justify-between {justify-content: space-between;}
+
+
+/*------Grid------*/
+@mixin gridGenerator ($bp) {
+    @if $bp==min {
+        [class*="visible-"] {display: none !important;}
+        .text-left {text-align: left;}
+        .text-center {text-align: center;}
+        .text-right {text-align: right;}
+        .column.align-start {align-self: flex-start;}
+        .column.align-center {align-self: center;}
+        .column.align-end {align-self: flex-end;}
+    }
+    @else {
+        .text-#{$bp}-left {text-align: left;}
+        .text-#{$bp}-center {text-align: center;}
+        .text-#{$bp}-right {text-align: right;}
+    }
+    .hidden-#{$bp} {display: none !important;}
+    .visible-#{$bp} {display: block !important;}
+    // .inline-block.visible-#{$bp}, .domo-button:not(.primary-block, .secondary-block, .submit-block) {display: inline-block !important;}
+    .inline-block.visible-#{$bp} {display: inline-block !important;}
+    .inline.visible-#{$bp} {display: inline !important;}
+    .flex.visible-#{$bp}, .row.visible-#{$bp}:not(.no-flex) {display: flex !important;}
+    .block.visible-#{$bp} {display: block !important;}
+    @for $i from 1 through 12 {
+        $col-width: unquote((100/$i) + '%');
+        // .row.col-#{$bp}-#{$i} > .column {flex-basis: $col-width;}
+        .row.col-#{$bp}-#{$i} > .column {flex: none !important; width: $col-width;}
+    }
+    @for $i from 1 through 12 {
+        $col-boot-width: unquote((($i/12) * 100) + '%');
+        // .column.col-#{$bp}-#{$i} {flex-basis: $col-boot-width !important;}
+        .column.col-#{$bp}-#{$i} {flex: none !important; width: $col-boot-width !important;}
+    }
+}
+
+@include gridGenerator(min);
+
+@include bp-xs {
+    @include gridGenerator(xs);
+}
+
+@include bp-sm {
+    @include gridGenerator(sm);
+}
+
+@include bp-md {
+    @include gridGenerator(md);
+}
+
+@include bp-lg {
+    @include gridGenerator(lg);
+}
+
+@include bp-xl {
+    @include gridGenerator(xl);
+}

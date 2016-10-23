@@ -1,0 +1,121 @@
+// THIS FILE IS FOR "DEMO STYLING" ONLY
+
+// Normalizers
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    // background-color: #3E91D5;
+    // background: linear-gradient(#3E91D5, #0D528A);
+    background-color: #22303C;
+    // background: linear-gradient(#22303C, #141F28);
+}
+
+*, :before, :after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+// Theme
+body {
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    color: white;
+}
+
+h1 {
+    padding: 40px 20px;
+    font-size: 40px;
+    text-align: center;
+}
+
+p.copy {
+    opacity: .5;
+    line-height: 24px;
+    padding: 0 15px;
+}
+
+.content-container {
+    @include bp-sm {
+        padding: 0 20px;
+    }
+}
+
+// need row container for Firefox psuedo bug
+.row-container {position: relative;}
+.row-container.justify-around:before {content: "justify-around";}
+.row-container.justify-between:before {content: "justify-between";}
+
+.row {
+    box-shadow: 0px 4px 20px rgba($black, .16);
+    background-color: #141F28;
+    padding-top: $bufferSm;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 80px;
+    text-align: center;
+    @include bp-sm {
+        border-radius: 6px;
+    }
+    &.justify-start:before {content: "justify-start";}
+    &.justify-center:before {content: "justify-center";}
+    &.justify-end:before {content: "justify-end";}
+    &.align-start:before {content: "align-start";}
+    &.align-center:before {content: "align-center";}
+    &.align-end:before {content: "align-end";}
+    &.align-stretch:before {content: "align-stretch";}
+    &.reverse:before {content: "reverse";}
+    &.wrap-reverse:before {content: "wrap-reverse";}
+    &.reverse.wrap-reverse:before {content: "reverse + wrap-reverse";}
+    &.vertical-center:before {content: "vertical-center";}
+}
+
+.column {
+    > div {
+        box-shadow: 0px 4px 20px rgba($black, .16);
+        border-radius: 6px;
+        padding: 30px;
+        // background-color: rgba(white, .1);
+        background-color: #2A3A47;
+    }
+    &.align-start > div:before {content: "align-start";}
+    &.align-center > div:before {content: "align-center";}
+    &.align-end > div:before {content: "align-end";}
+    &.order-1 > div:before {content: "order: 1";}
+    &.order-2 > div:before {content: "order: 2";}
+}
+
+.row-container.justify-around,
+.row-container.justify-between,
+.row.justify-start,
+.row.justify-end,
+.row.justify-center:not(.vertical-center),
+.row.align-start,
+.row.align-center,
+.row.align-end,
+.row.align-stretch,
+.row.reverse,
+.row.wrap-reverse,
+.row.reverse.wrap-reverse,
+.row.vertical-center,
+.column.align-start > div,
+.column.align-center > div,
+.column.align-end > div,
+.column.order-1 > div,
+.column.order-2 > div {
+    &:before {
+        white-space: nowrap;
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -15px;
+        height: 30px;
+        background-color: #3E91D5;
+        line-height: 28px;
+        border-radius: 15px;
+        padding: 0 20px;
+        box-shadow: 0px 6px 30px rgba($black, .16);
+    }
+}
