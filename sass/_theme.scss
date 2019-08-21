@@ -6,10 +6,7 @@ html {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
-    // background-color: #3E91D5;
-    // background: linear-gradient(#3E91D5, #0D528A);
     background-color: #22303C;
-    // background: linear-gradient(#22303C, #141F28);
 }
 
 *, :before, :after {
@@ -31,61 +28,131 @@ h1 {
 }
 
 p.copy {
-    opacity: .5;
+    color: rgba(white, .5);
     line-height: 24px;
     padding: 0 15px;
+    .class {
+        font-weight: 600;
+        color: rgba(white, .75);
+    }
+}
+
+#no-no ol {
+    padding-left: 30px;
+    > li {
+        padding-bottom: 15px;
+    }
 }
 
 .content-container {
+    padding: 0 10px;
     @include bp-sm {
         padding: 0 20px;
     }
 }
 
-// need row container for Firefox psuedo bug
+header#breakpoints {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(#141F28, .98);
+    padding: 15px 0;
+    box-shadow: 0px 4px 20px rgba($black, .3);
+    > ul {
+        font-size: 12px;
+        font-weight: 700;
+        text-align: center;
+        white-space: nowrap !important;
+        > li {
+            display: inline-block;
+            line-height: 24px;
+            padding: 0 10px;
+            border-radius: 12px;
+            transition: background 1s ease 0s;
+            &:nth-child(1) {background-color: #3E91D5; opacity: 1;}
+            @include bp-xs {
+                &:nth-child(2) {background-color: #3E91D5; opacity: 1;}
+                &:not(:nth-child(2)) {background-color: transparent;}}
+            @include bp-sm {
+                &:nth-child(3) {background-color: #3E91D5; opacity: 1;}
+                &:not(:nth-child(3)) {background-color: transparent;}}
+            @include bp-md {
+                &:nth-child(4) {background-color: #3E91D5; opacity: 1;}
+                &:not(:nth-child(4)) {background-color: transparent;}}
+            @include bp-lg {
+                &:nth-child(5) {background-color: #3E91D5; opacity: 1;}
+                &:not(:nth-child(5)) {background-color: transparent;}}
+            @include bp-xl {
+                &:nth-child(6) {background-color: #3E91D5; opacity: 1;}
+                &:not(:nth-child(6)) {background-color: transparent;}}
+        }
+    }
+}
+
+// need row container for Firefox psuedo bug (:before and :after don't work with justify-around and justify-between)
 .row-container {position: relative;}
-.row-container.justify-around:before {content: "justify-around";}
-.row-container.justify-between:before {content: "justify-between";}
+.row-container.justify-around:before {content: ".justify-around";}
+.row-container.justify-between:before {content: ".justify-between";}
 
 .row {
     box-shadow: 0px 4px 20px rgba($black, .16);
     background-color: #141F28;
     padding-top: $bufferSm;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0;
+    padding-right: 0;
     margin-bottom: 80px;
     text-align: center;
+    border-radius: 6px;
     @include bp-sm {
-        border-radius: 6px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
-    &.justify-start:before {content: "justify-start";}
-    &.justify-center:before {content: "justify-center";}
-    &.justify-end:before {content: "justify-end";}
-    &.align-start:before {content: "align-start";}
-    &.align-center:before {content: "align-center";}
-    &.align-end:before {content: "align-end";}
-    &.align-stretch:before {content: "align-stretch";}
-    &.reverse:before {content: "reverse";}
-    &.wrap-reverse:before {content: "wrap-reverse";}
-    &.reverse.wrap-reverse:before {content: "reverse + wrap-reverse";}
-    &.vertical-center:before {content: "vertical-center";}
+    &.col-sm-2.col-md-4:before {content: ".col-sm-2 .col-md-4";}
+    &.justify-start:before {content: ".justify-start";}
+    &.justify-center:before {content: ".justify-center";}
+    &.justify-end:before {content: ".justify-end";}
+    &.align-start:before {content: ".align-start";}
+    &.align-center:before {content: ".align-center";}
+    &.align-end:before {content: ".align-end";}
+    &.align-stretch:before {content: ".align-stretch";}
+    &.reverse:before {content: ".reverse";}
+    &.wrap-reverse:before {content: ".wrap-reverse";}
+    &.reverse.wrap-reverse:before {content: ".reverse .wrap-reverse";}
+    &.vertical-center:before {content: ".vertical-center | height: 400px";}
 }
 
 .column {
     > div {
         box-shadow: 0px 4px 20px rgba($black, .16);
         border-radius: 6px;
-        padding: 30px;
-        // background-color: rgba(white, .1);
+        padding: 20px 15px;
         background-color: #2A3A47;
+        @include bp-sm {
+            padding: 30px;
+        }
+        > .row {
+            padding-top: 30px;
+            margin: 0;
+        }
     }
-    &.align-start > div:before {content: "align-start";}
-    &.align-center > div:before {content: "align-center";}
-    &.align-end > div:before {content: "align-end";}
+    &.col-sm-6.col-md-2 > div:before {content: ".col-sm-6 .col-md-2";}
+    &.col-sm-6.col-md-6 > div:before {content: ".col-sm-6 .col-md-6";}
+    &.col-sm-12.col-md-4 > div:before {content: ".col-sm-12 .col-md-4";}
+    &.col-sm-12.col-md-6 > div:before {content: ".col-sm-12 .col-md-6";}
+    &.align-start > div:before {content: ".align-start";}
+    &.align-center > div:before {content: ".align-center";}
+    &.align-end > div:before {content: ".align-end";}
     &.order-1 > div:before {content: "order: 1";}
     &.order-2 > div:before {content: "order: 2";}
 }
 
+.row.col-sm-2.col-md-4,
+.column.col-sm-6.col-md-2 > div,
+.column.col-sm-6.col-md-6 > div,
+.column.col-sm-12.col-md-4 > div,
+.column.col-sm-12.col-md-6 > div,
 .row-container.justify-around,
 .row-container.justify-between,
 .row.justify-start,
@@ -110,12 +177,14 @@ p.copy {
         z-index: 1;
         left: 50%;
         transform: translateX(-50%);
-        top: -15px;
-        height: 30px;
+        top: -13px;
+        height: 26px;
         background-color: #3E91D5;
-        line-height: 28px;
-        border-radius: 15px;
-        padding: 0 20px;
+        line-height: 26px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 14px;
+        padding: 0 12px;
         box-shadow: 0px 6px 30px rgba($black, .16);
     }
 }

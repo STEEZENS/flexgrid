@@ -11,14 +11,24 @@
 </head>
 <body>
 
+    <header id="breakpoints">
+        <ul>
+            <li>MIN</li>
+            <li>XS</li>
+            <li>SM</li>
+            <li>MD</li>
+            <li>LG</li>
+            <li>XL</li>
+        </ul>
+    </header>
 
-    <section id="how-to">
+    <section id="basics" style="padding-top: 60px;">
         <div class="content-container">
 
-            <h1>How To</h1>
+            <h1>Basics</h1>
 
             <!-- Defining Columns from Row -->
-            <p class="copy">Defining "col-" from .row:</p>
+            <p class="copy" style="padding-bottom: 15px;">Defining <span class="class">.col–{screen size}–{# of columns}</span> from <span class="class">.row</span></p>
             <div class="row col-sm-2 col-md-4 gutters">
                 <div class="column"><div></div></div>
                 <div class="column"><div></div></div>
@@ -27,7 +37,7 @@
             </div>
 
             <!-- Defining Columns from Column -->
-            <p class="copy">Defining "col-" from .column:</p>
+            <p class="copy">Defining <span class="class">.col–{screen size}–{column width}</span> from <span class="class">.column</span></p>
             <div class="row gutters">
                 <div class="column col-sm-6 col-md-2"><div></div></div>
                 <div class="column col-sm-6 col-md-6"><div></div></div>
@@ -35,15 +45,15 @@
             </div>
 
             <!-- Overiding Row's Column Declarations from Column -->
-            <p class="copy">Overiding .row's "col-" declarations from .column:</p>
+            <p class="copy" style="padding-bottom: 15px;">Overiding <span class="class">.row</span>'s "col-" declarations from <span class="class">.column</span></p>
             <div class="row col-sm-2 col-md-4 gutters">
                 <div class="column"><div></div></div>
-                <div class="column col-sm-12 col-md-6"><div></div></div>
                 <div class="column"><div></div></div>
+                <div class="column col-sm-12 col-md-6"><div></div></div>
             </div>
 
             <!-- Nesting Rows & Columns -->
-            <p class="copy">Nesting .row &amp; .col:</p>
+            <p class="copy">Nesting <span class="class">.row</span> and <span class="class">.column</span></p>
             <div class="row gutters">
                 <div class="column col-md-8">
                     <div>
@@ -110,6 +120,7 @@
         <div class="content-container">
 
             <h1>Vertical Alignment</h1>
+            <p class="copy" style="padding-bottom: 15px;">Declare vertical alignment from <span class="class">.row</span></p>
 
             <!-- Align stretch -->
             <div class="row col-min-3 align-stretch gutters">
@@ -140,50 +151,11 @@
             </div>
 
             <!-- Align From Column -->
+            <p class="copy">Declare vertical alignment from <span class="class">.column</span></p>
             <div class="row col-min-3 gutters">
                 <div class="column align-center"><div></div></div>
                 <div class="column align-start"><div style="padding-top: 120px;"></div></div>
                 <div class="column align-end"><div></div></div>
-            </div>
-
-        </div>
-    </section>
-
-
-    <section id="reverse">
-        <div class="content-container">
-
-            <h1>Wrap &amp; Order</h1>
-
-            <!-- Reverse -->
-            <div class="row col-sm-2 col-md-4 reverse gutters">
-                <div class="column"><div>1</div></div>
-                <div class="column"><div>2</div></div>
-                <div class="column"><div>3</div></div>
-                <div class="column"><div>4</div></div>
-            </div>
-
-            <!-- Wrap Reverse -->
-            <div class="row col-sm-2 col-md-4 wrap-reverse gutters">
-                <div class="column"><div>1</div></div>
-                <div class="column"><div>2</div></div>
-                <div class="column"><div>3</div></div>
-                <div class="column"><div>4</div></div>
-            </div>
-
-            <!-- Reverse + Wrap Reverse -->
-            <div class="row col-sm-2 col-md-4 reverse wrap-reverse gutters">
-                <div class="column"><div>1</div></div>
-                <div class="column"><div>2</div></div>
-                <div class="column"><div>3</div></div>
-                <div class="column"><div>4</div></div>
-            </div>
-
-            <!-- Order -->
-            <div class="row col-md-3 gutters">
-                <div class="column order-1" style="order: 1;"><div>1</div></div>
-                <div class="column order-2" style="order: 2;"><div>2</div></div>
-                <div class="column"><div>3</div></div>
             </div>
 
         </div>
@@ -204,6 +176,46 @@
     </section>
 
 
+    <section id="reverse">
+        <div class="content-container">
+
+            <h1>Wrap &amp; Order</h1>
+
+            <!-- Reverse -->
+            <div class="row col-min-2 col-md-4 reverse gutters">
+                <div class="column"><div>1</div></div>
+                <div class="column"><div>2</div></div>
+                <div class="column"><div>3</div></div>
+                <div class="column"><div>4</div></div>
+            </div>
+
+            <!-- Wrap Reverse -->
+            <div class="row col-min-2 col-md-4 wrap-reverse gutters">
+                <div class="column"><div>1</div></div>
+                <div class="column"><div>2</div></div>
+                <div class="column"><div>3</div></div>
+                <div class="column"><div>4</div></div>
+            </div>
+
+            <!-- Reverse + Wrap Reverse -->
+            <div class="row col-min-2 col-md-4 reverse wrap-reverse gutters">
+                <div class="column"><div>1</div></div>
+                <div class="column"><div>2</div></div>
+                <div class="column"><div>3</div></div>
+                <div class="column"><div>4</div></div>
+            </div>
+
+            <!-- Order -->
+            <div class="row col-min-3 gutters">
+                <div class="column order-1" style="order: 1;"><div>1</div></div>
+                <div class="column order-2" style="order: 2;"><div>2</div></div>
+                <div class="column"><div>3</div></div>
+            </div>
+
+        </div>
+    </section>
+
+
     <!-- No Wrap -->
 
     <!-- Mix "Fixed" & "Flexible Siblings (nearly impossible in any other layout method)" -->
@@ -214,6 +226,22 @@
     <!-- Text Align -->
 
     <!-- Gutters and Spacing -->
+
+    <section id="no-no" class="padding-bottom">
+        <div class="content-container">
+
+            <h1>No-No's</h1>
+
+            <ol>
+                <li><p class="copy">Do not place non-<span class="class">.column</span> elements as immediate children of <span class="class">.row</span>. Evil things will happen if you choose to do so.</p></li>
+                <li><p class="copy">Until support for IE9 is dropped, avoid using <span class="class">.row</span> without <span class="class">.column</span>. If the content does not intend to share horizontal space, a simple <span class="class">div</span> should be used for “block” containment instead of <span class="class">.row</span>.</p></li>
+                <li><p class="copy">When declaring <span class="class">justify-{{ start | center | end }}</span> on <span class="class">.row</span>, it is important to also specify <span class="class">text-{{ alignment }}</span> on <span class="class">.column</span> for the <span class="class">FlexGrid</span> fallback to work properly.</p></li>
+                <li><p class="copy">Never try to apply box-model properties (i.e. padding, borders, or margin) directly to <span class="class">.column</span>. Because this is a flexed child, these styles will render differently (and incorrectly) in different browsers. The solution is to apply these styles to <span class="class">.inner-column</span>. This practice occurs automatically in <span class="class">FlexGrid</span> by passing class properties applied to <span class="class">.column</span> to its immediate child, <span class="class">.inner-column</span>.</p></li>
+                <li><p class="copy">Because <span class="class">.column</span> has flexed-child properties, it must be directly nested inside of a flex-parent (i.e. <span class="class">.row</span>) for it’s flexed properties to take effect. For this reason, do not use <span class="class">.column</span> without <span class="class">.row</span>.</p></li>
+            </ol>
+
+        </div>
+    </section>
 
 </body>
 </html>

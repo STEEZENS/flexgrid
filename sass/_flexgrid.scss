@@ -3,7 +3,6 @@
     position: relative;
     width: 100%;
     max-width: 100%;
-    height: auto;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -17,7 +16,6 @@
     flex-wrap: nowrap !important;
 }
 .row.vertical-center {
-    min-height: inherit;
     height: 100%;
     > .column {
         height: auto;
@@ -29,28 +27,34 @@
 .column {
     margin: 0 !important;
     padding: 0 !important;
-    border: none !important;
+    // border: none !important;
     position: relative;
     width: 100%;
-    max-height: 100%;
-    // causes stretch problems
-    height: 100%;
     flex: 0 1 auto;
     > div {
         position: relative;
-        // causes stretch problems
         height: 100%;
     }
 }
 
-// TODO: fix .column, .inner-column height and stretch problems. Avoid giving margins to .inner-column. Only use padding
-
 // Gutters
-.row.gutters > .column > div {
-    margin: 0 $pad $bufferSm $pad;
+.row.gutters > .column {
+    // margin: 0 15px 30px 15px;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 15px solid transparent;
+    @include bp-sm {
+        // margin: 0 $pad $bufferSm $pad;
+        border-right: 20px solid transparent;
+        border-bottom: 40px solid transparent;
+        border-left: 20px solid transparent;
+    }
 }
 .row.gutters.no-gutter-bottom {
-    margin-bottom: -$bufferSm;
+    margin-bottom: -30px;
+    @include bp-sm {
+        margin-bottom: -$bufferSm;
+    }
 }
 
 //Reverse Order
@@ -64,7 +68,6 @@
 .row.align-center > .column {align-self: center;}
 .row.align-end > .column {align-self: flex-end;}
 .row.align-stretch {align-items: stretch;}
-.row.align-stretch > .column {align-self: stretch;}
 
 //Justify Content
 .row.justify-start {justify-content: flex-start;}
@@ -84,6 +87,7 @@
         .column.align-start {align-self: flex-start;}
         .column.align-center {align-self: center;}
         .column.align-end {align-self: flex-end;}
+        .column.align-stretch {align-self: stretch;}
     }
     @else {
         .text-#{$bp}-left {text-align: left;}
